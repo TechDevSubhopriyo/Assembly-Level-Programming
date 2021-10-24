@@ -1,0 +1,19 @@
+;Add 3 numbers from memory and store result
+ORG 2000H
+	MVI C,02H
+	MVI B,00H
+	LXI H,3000H
+	MOV A,M
+COUNT:	INX H
+	ADD M
+	JNC CNT
+	INR B
+CNT:	DCR C
+	JNZ COUNT
+	STA 3500H
+	MOV A,B
+	STA 3501H
+	HLT
+ORG 3000H
+DB 05H,2FH,01H
+END
